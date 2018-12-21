@@ -14,14 +14,14 @@ def rest():
         
     def POST(table_name, **fields):
         if table_name:
-            return db[tablename].validate_and_insert(**fields)
+            return db[table_name].validate_and_insert(**fields)
         else:
             raise HTTP(400)
 
-    def PUT(table_name,record_id,**vars):
-        return db(db[tablename]._id==record_id).update(**vars)
+    def PUT(table_name,record_id, **vars):
+        return db(db[table_name]._id==record_id).update(**vars)
     
-    def DELETE(table_name,record_id):
+    def DELETE(table_name, record_id):
         return db(db[table_name]._id==record_id).delete()
 
     return locals()
