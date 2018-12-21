@@ -8,7 +8,9 @@ Aplicação feita usando o framework [web2py](http://http://web2py.com/)
 - Faça download do framework [aqui](https://mdipierro.pythonanywhere.com/examples/static/web2py_src.zip)
 - Clone este repositório dentro da pasta `web2py/applications/`
 - Inicie o servidor do web2py com o comando 
-```python web2py.py```
+```bash
+python web2py.py
+```
 - Acesse o endereço `http://localhost:8000/tasklist` no navegador
 
 
@@ -29,19 +31,27 @@ O retorno é em formato json.
 
 
 Endpoint para acessar todas as tarefas cadastradas
-```http://localhost:8000/tasklist/api/rest/tarefas```
+```
+http://localhost:8000/tasklist/api/rest/tarefas
+```
 
 
 Acessar detalhes de tarefa pelo seu id
-```http://localhost:8000/tasklist/api/rest/tarefas?id=1```
+```
+http://localhost:8000/tasklist/api/rest/tarefas?id=1
+```
 
 
 Podemos adicionar novas tarefas via POST, exemplo usando curl:
-```curl -d "titulo=tarefa adicionada via api" http://localhost:8000/tasklist/api/rest/tarefas```
+```bash
+curl -d "titulo=tarefa adicionada via api" http://localhost:8000/tasklist/api/rest/tarefas
+```
 
 
 E excuir também, passando com argumento o id da tarefa:
-```curl -X DELETE http://localhost:8000/tasklist/api/rest/tarefas/5```
+```bash
+curl -X DELETE http://localhost:8000/tasklist/api/rest/tarefas/5
+```
 
 ## Demonstração
 Uma livedemo da aplicação pode ser acessada em http://volneyrock.pythonanywhere.com/web2tasklist
