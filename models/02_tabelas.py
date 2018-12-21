@@ -5,3 +5,6 @@ Tarefas = db.define_table('tarefas',
                            Field('obs', 'text', label='OBS.'),
                            auth.signature,
                            format='%(titulo)s')
+
+Tarefas.titulo.requires = IS_NOT_EMPTY(
+    error_message='Preenchimento obrigatório')

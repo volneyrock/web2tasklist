@@ -6,8 +6,16 @@
 
 # ---- example index page ----
 def index():
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    tarefas = db(Tarefas.id>0).select()
+    return dict(tarefas=tarefas)
+
+def crud_tarefa():
+    tarefa  = request.args(0)
+    if tarefa:
+        form = crud.update(Tarefas, tarefa)
+    else:
+        form = crud.create(Tarefas)
+    return dict(form=form)
 
 # ---- API (example) -----
 @auth.requires_login()

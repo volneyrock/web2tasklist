@@ -1,0 +1,25 @@
+{{extend 'layout.html'}}
+
+{{block header}}
+<div class="jumbotron jumbotron-fluid background" style="background-color: #333; color:white; padding:30px;word-wrap:break-word;">
+  <div class="container center">
+    <h1 class="display-5">Editar/Nova Tarefa</h1>
+  </div>
+</div>
+{{end}}
+
+<div class="row">
+    <div class="col-lg-8 col-sm-12">
+        <h4>Tarefa:</h4>
+        {{=form}}
+    </div>
+    <div class="col-lg-4 col-sm-12">
+        <h4>Detalhes:</h4>
+        <p>Criado por: </p>
+        <p>Data de criação:</p>
+        <p>Finalizada em:</p>
+    </div>
+</div>
+
+
+

@@ -53,3 +53,16 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
+timestamp: 2018-12-21T13:44:38.351802
+CREATE TABLE "tarefas"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "titulo" CHAR(512),
+    "status" CHAR(1),
+    "obs" TEXT,
+    "is_active" CHAR(1),
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "modified_on" TIMESTAMP,
+    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!

@@ -6,5 +6,6 @@
 # ----------------------------------------------------------------------------------------------------------------------
 
 response.menu = [
-    (T('Home'), False, URL('default', 'index'), [])
+    (T('Tasklist'), False, URL('default', 'index'), []),
+    (T('New task'), False, URL('default', 'crud_tarefa'), [])
 ]
