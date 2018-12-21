@@ -7,6 +7,9 @@ def index():
 
 # ---- crud da tabela Tarefas ----
 def crud_tarefa():
+    '''
+    Esta action, faz um crud completo para a tabela "Tarefas"
+    '''
     tarefa  = request.args(0)
     if tarefa:
         form = SQLFORM(Tarefas, tarefa, showid=False, deletable=True)
@@ -18,11 +21,6 @@ def crud_tarefa():
     elif form.errors:
         response.flash = "Erro ao cadastrar!"
     return dict(form=form)
-
-# ---- API (get example) -----
-def api_get_tasks():
-    tarefas = db(Tarefas.id>0).select()
-    return response.json({'status':'success', 'tasks':tarefas})
 
 # ---- Action for login/register/etc (required for auth) -----
 def user():

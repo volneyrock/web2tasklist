@@ -50,8 +50,6 @@ else:
     # session.connect(request, response, db = MEMDB(Client()))
     # ---------------------------------------------------------------------
 
-from gluon.tools import Crud
-crud = Crud(db)
 # -------------------------------------------------------------------------
 # by default give a view/generic.extension to all actions from localhost
 # none otherwise. a pattern can be 'controller/function.extension'
