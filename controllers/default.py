@@ -1,41 +1,28 @@
 # -*- coding: utf-8 -*-
-# -------------------------------------------------------------------------
-# This is a sample controller
-# this file is released under public domain and you can use without limitations
-# -------------------------------------------------------------------------
 
-# ---- example index page ----
+# ---- index page ----
 def index():
     tarefas = db(Tarefas.id>0).select()
     return dict(tarefas=tarefas)
 
+# ---- crud da tabela Tarefas ----
 def crud_tarefa():
     tarefa  = request.args(0)
     if tarefa:
-        form = crud.update(Tarefas, tarefa)
+        form = SQLFORM(Tarefas, tarefa, showid=False, deletable=True)
     else:
-        form = crud.create(Tarefas)
+        form = SQLFORM(Tarefas)
+    if form.process().accepted:
+        session.flash = "Tarefa criada/editada"                     
+        redirect(URL('default', 'index'))
+    elif form.errors:
+        response.flash = "Erro ao cadastrar!"
     return dict(form=form)
 
-# ---- API (example) -----
-@auth.requires_login()
-def api_get_user_email():
-    if not request.env.request_method == 'GET': raise HTTP(403)
-    return response.json({'status':'success', 'email':auth.user.email})
-
-# ---- Smart Grid (example) -----
-@auth.requires_membership('admin') # can only be accessed by members of admin groupd
-def grid():
-    response.view = 'generic.html' # use a generic view
-    tablename = request.args(0)
-    if not tablename in db.tables: raise HTTP(403)
-    grid = SQLFORM.smartgrid(db[tablename], args=[tablename], deletable=False, editable=False)
-    return dict(grid=grid)
-
-# ---- Embedded wiki (example) ----
-def wiki():
-    auth.wikimenu() # add the wiki to the menu
-    return auth.wiki() 
+# ---- API (get example) -----
+def api_get_tasks():
+    tarefas = db(Tarefas.id>0).select()
+    return response.json({'status':'success', 'tasks':tarefas})
 
 # ---- Action for login/register/etc (required for auth) -----
 def user():

@@ -15,21 +15,25 @@
         <thead>
           <tr>
             <th>Tarefa</th>
+            <th>Criada em:</th>
             <th>Status</th>
-            <th>Editar/Detalhes</th>
+            <th>OBS</th>
+            <th>Editar</th>
           </tr>
         </thead>
         <tbody>
           {{for tarefa in tarefas:}}
           <tr>
             <th>{{=tarefa.titulo}}</th>
+            <th>{{=tarefa.created_on.strftime('%d/%m/%Y %H:%M:%S')}}</th>
             <th>
               {{if tarefa.status == False:}}
               <p class="text-danger">Em aberto</p>
               {{else:}}
-              <p class="text-success">Finalizada</p>
+              <p class="text-success">Finalizada - {{=tarefa.modified_on.strftime('%d/%m/%Y %H:%M:%S')}}</p>
               {{pass}}
             </th>
+            <th>{{=tarefa.obs}}</th>
             <th><a href="{{=URL('default', 'crud_tarefa', args=tarefa.id)}}" class="btn-sm btn-info">Editar</a></th>
           </tr>
           {{pass}}
