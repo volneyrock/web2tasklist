@@ -48,7 +48,7 @@ curl -d "titulo=tarefa adicionada via api" http://localhost:8000/tasklist/api/re
 ```
 
 
-E excuir também, passando com argumento o id da tarefa:
+E excluir também, passando com argumento o id da tarefa:
 ```bash
 curl -X DELETE http://localhost:8000/tasklist/api/rest/tarefas/5
 ```
